@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Red color ANSI escape code
+RED='\e[31m'
+RESET='\e[0m'
+
+# Display the banner in red
+echo -e "${RED}"
+figlet -f slant "FALCON"
+echo -e "${RESET}"
+
+# Get system uptime
+uptime_info=$(uptime -p)
+
+# Format the MOTD with system information
+echo "$uptime_info"
+printf "\n"
+
