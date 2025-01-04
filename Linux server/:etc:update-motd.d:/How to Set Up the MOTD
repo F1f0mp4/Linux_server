@@ -2,4 +2,4 @@ Make it executable:
 sudo chmod +x /etc/update-motd.d/00-uptime
 
 Test the MOTD:
-/etc/update-motd.d/00-uptime
+run-parts /etc/update-motd.d/
