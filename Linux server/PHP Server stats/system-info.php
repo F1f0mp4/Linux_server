@@ -103,7 +103,6 @@ function getDiskDetails() {
 }
 
 // Output the data
-echo "Falcon server stats\n\n";
 echo "Real-Time CPU Monitor\n\n";
 echo getCpuInfo() . "\n";
 echo "\nCPU Usage: " . getCpuUsage() .", " . getCpuTemperature() . "\n";
