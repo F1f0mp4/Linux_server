@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPU Monitor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #282828;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+        }
+        .content {
+            padding: 20px;
+        }
+        pre {
+            background-color: #282828;
+            color: #00ff00;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Falcon server stats</h1>
+    </div>
+    <div class="content">
+        <pre id="cpu-overview">Loading...</pre>
+    </div>
+    <script>
+        function fetchCPUData() {
+            fetch('system-info.php')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('cpu-overview').innerText = data;
+                })
+                .catch(err => {
+                    document.getElementById('cpu-overview').innerText = "Error: " + err;
+                });
+        }
+
+        // Refresh data every second
+        setInterval(fetchCPUData, 1000);
+        fetchCPUData(); // Fetch initially
+    </script>
+</body>
+</html>
