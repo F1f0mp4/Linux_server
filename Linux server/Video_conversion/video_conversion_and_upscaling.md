@@ -32,7 +32,10 @@ If the file name contains spaces or special characters, use one of these methods
 ```bash
 ffmpeg -i Harry\ Potter\ \(7-1\)\ A\ Dary\ smrti\ 1.mkv -c copy Harry\ Potter\ \(7-1\)\ A\ Dary\ smrti\ 1.mp4
 ```
-
+#### Go to repository:
+```bash
+cd /mnt/smbshare/MOVIES/
+```
 #### Using Quotes:
 ```bash
 ffmpeg -i "Harry Potter (7-1) A Dary smrti 1.mkv" -c copy "Harry Potter (7-1) A Dary smrti 1.mp4"
