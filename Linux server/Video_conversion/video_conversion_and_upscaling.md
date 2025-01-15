@@ -38,7 +38,7 @@ cd /mnt/smbshare/MOVIES/
 ```
 #### Using Quotes:
 ```bash
-ffmpeg -i "Harry Potter (7-1) A Dary smrti 1.mkv" -c copy "Harry Potter (7-1) A Dary smrti 1.mp4"
+ffmpeg -i "Harry.mkv" -c copy "Harry.mp4"
 ```
 
 ## 2. Upscaling Video from 1080p to 4K
