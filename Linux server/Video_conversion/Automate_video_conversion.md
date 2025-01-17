@@ -8,6 +8,57 @@ Save the updated script to a file. For example, save it as `convert_mkv_to_mp4.s
 nano ~/convert_mkv_to_mp4.sh
 ```
 
+```bash
+#!/bin/bash
+
+# Directory to monitor
+WATCH_DIR="/mnt/smbshare/MOVIES"
+
+# Process existing .mkv files first
+for input_file in "$WATCH_DIR"/*.mkv; do
+    if [[ -f "$input_file" ]]; then
+        output_file="${input_file%.mkv}.mp4"
+        
+        # Convert .mkv to .mp4 using ffmpeg
+        echo "Converting $input_file to $output_file"
+        ffmpeg -i "$input_file" -c copy "$output_file"
+
+        # Check if conversion was successful, then delete the .mkv
+        if [[ $? -eq 0 ]]; then
+            echo "Conversion successful. Deleting original .mkv file."
+            rm "$input_file"
+        else
+            echo "Conversion failed."
+        fi
+    fi
+done
+
+# Monitor for new .mkv files
+inotifywait -m -e create --format "%f" "$WATCH_DIR" | while read filename
+do
+    # Check if the file is an .mkv
+    if [[ "$filename" == *.mkv ]]; then
+        echo "Detected new .mkv file: $filename"
+        
+        # Define input and output file paths
+        input_file="$WATCH_DIR/$filename"
+        output_file="${input_file%.mkv}.mp4"
+
+        # Convert .mkv to .mp4 using ffmpeg
+        echo "Converting $input_file to $output_file"
+        ffmpeg -i "$input_file" -c copy "$output_file"
+
+        # Check if conversion was successful, then delete the .mkv
+        if [[ $? -eq 0 ]]; then
+            echo "Conversion successful. Deleting original .mkv file."
+            rm "$input_file"
+        else
+            echo "Conversion failed."
+        fi
+    fi
+done
+```
+
 Paste the script content into the file and save it (press `Ctrl + O` to save, then `Ctrl + X` to exit).
 
 ### Step 2: Make the Script Executable
