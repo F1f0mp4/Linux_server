@@ -28,17 +28,13 @@ ffmpeg -i input.mkv -vcodec libx264 -acodec aac output.mp4
 ### Handling File Names with Spaces:
 If the file name contains spaces or special characters, use one of these methods:
 
-#### Using Escaped Spaces:
-```bash
-ffmpeg -i Harry\ Potter\ \(7-1\)\ A\ Dary\ smrti\ 1.mkv -c copy Harry\ Potter\ \(7-1\)\ A\ Dary\ smrti\ 1.mp4
-```
 #### Go to repository:
 ```bash
 cd /mnt/smbshare/MOVIES/
 ```
 #### Using Quotes:
 ```bash
-ffmpeg -i "Harry.mkv" -c copy "Harry.mp4"
+ffmpeg -i ".mkv" -c copy ".mp4"
 ```
 
 ## 2. Upscaling Video from 1080p to 4K
