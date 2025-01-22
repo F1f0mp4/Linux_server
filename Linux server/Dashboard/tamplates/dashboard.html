@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css" />
+    <script>
+      async function fetchData() {
+        try {
+          const response = await fetch("server_status.php");
+          const data = await response.json();
+    
+          // Update Disk Info
+          const diskInfo = data.disks
+            .map(
+              (disk) => `
+                    <div>
+                        <strong>${disk.name}</strong>: 
+                        ${disk.usedSpacePercentage}% of ${disk.totalSpace}GB used
+                        <div class="progress-bar">
+                          <div class="progress" style="width: ${
+                            disk.usedSpacePercentage
+                          }%;"></div>
+                        </div>
+                    </div>`
+            )
+            .join("");
+          document.getElementById("disk-info").innerHTML = diskInfo;
+    
+          // Update Services Info
+          const servicesInfo = data.services
+            .map(
+              (service) => `
+                    <div>
+                        ${service.name}: 
+                        <span class="status ${
+                          service.active ? "active" : "inactive"
+                        }">${service.active ? "🟢 active" : "🔻 inactive"}</span>
+                    </div>`
+            )
+            .join("");
+          document.getElementById("services-info").innerHTML = servicesInfo;
+    
+          // Update CPU Info
+          const cpuThreads = data.cpu.threads
+            .map(
+              (thread, index) => `
+                    <div>
+                      Thread ${index + 1}: ${thread.usage}%
+                      <div class="progress-bar">
+                        <div class="progress" style="width: ${thread.usage}%;"></div>
+                      </div>
+                    </div>`
+            )
+            .join("");
+          document.getElementById("cpu-info").innerHTML = `
+                <div>
+                  <strong>${data.cpu.name}</strong>
+                  <div>Overall Usage: ${data.cpu.usage}%</div>
+                  <div class="progress-bar">
+                    <div class="progress" style="width: ${data.cpu.usage}%;"></div>
+                  </div>
+                </div>
+                <h3>Threads:</h3>
+                ${cpuThreads}`;
+    
+          // Update Uptime
+          document.getElementById("uptime").textContent = `Uptime: ${data.uptime}`;
+        } catch (error) {
+          console.error("Failed to fetch server data", error);
+        }
+      }
+    
+      setInterval(fetchData, 500);
+      window.onload = fetchData;
+    </script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>Server Dashboard</h1>
+
+      <div class="section">
+        <h2>Server Uptime</h2>
+        <div id="uptime">
+          <!-- Dynamic content for uptime -->
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Services</h2>
+        <div id="services-info">
+          <!-- Dynamic content for services -->
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>CPU Info</h2>
+        <div id="cpu-info">
+          <!-- Dynamic content for CPU -->
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Hard Disks</h2>
+        <div id="disk-info">
+          <!-- Dynamic content for disks -->
+        </div>
+      </div>
+
+      <div id="error-message" class="error-message"></div>
+    </div>
+  </body>
+</html>
