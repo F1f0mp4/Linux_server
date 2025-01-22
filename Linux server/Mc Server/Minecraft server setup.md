@@ -55,7 +55,7 @@ online-mode=true
 enable-whitelist=true
 
 # World settings
-level-seed=<your-seed>
+level-seed=28997391
 view-distance=10
 allow-nether=true
 ```
