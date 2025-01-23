@@ -50,13 +50,13 @@ server-ip=
 # Game settings
 gamemode=survival
 difficulty=easy
-max-players=20
+max-players=5
 online-mode=true
 enable-whitelist=true
 
 # World settings
 level-seed=28997391
-view-distance=10
+view-distance=32
 allow-nether=true
 ```
 
@@ -68,7 +68,7 @@ Save and exit (`Ctrl + O`, `Enter`, `Ctrl + X`).
 Start the server with the specified version and memory allocation.
 
 ```bash
-java -Xmx1024M -Xms1024M -jar server.jar nogui
+java -Xmx8192M -Xms8192M -jar server.jar nogui
 ```
 
 ### **6. Change the Version**
