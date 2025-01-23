@@ -42,9 +42,9 @@ nano server.properties
 Example configuration:
 ```properties
 # Server basics
-motd=Welcome to My Minecraft Server!
+motd=  \u00A7aWelcome to the \u00A7eLand of Ooo\u00A7a! \u00A7b| \u00A76Adventure Time!\u00A7r\n        \u00A79Come join the fun, \u00A75Heroes of Ooo!\u00A7r\n                        
 server-port=25565
-server-name=MyServer
+server-name=Land of Ooo
 server-ip=
 
 # Game settings
