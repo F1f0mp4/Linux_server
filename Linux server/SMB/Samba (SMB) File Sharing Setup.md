@@ -80,7 +80,7 @@ sudo apt install samba -y
 1. Add users:
    ```bash
    sudo useradd -m mom
-   sudo passwd <password> mom
+   sudo passwd mom
    ```
    Repeat for others (`dad`, `sister`, etc.).
 
