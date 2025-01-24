@@ -105,8 +105,13 @@ sudo apt install samba -y
    browsable = yes
    guest ok = no
    ```
-
+   
 5. Restart Samba:
+   ```bash
+   sudo smbpasswd -a username
+   ```
+
+6. Restart Samba:
    ```bash
    sudo systemctl restart smbd
    ```
