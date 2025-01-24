@@ -73,25 +73,6 @@ sudo apt install samba -y
    ```bash
    sudo nano /etc/samba/smb.conf
    ```
-2. Add:
-   ```ini
-   [SMBShare]
-   path = /mnt/smbshare
-   writable = yes
-   browsable = yes
-   guest ok = no
-   valid users = your_username
-   ```
-3. Restart Samba:
-   ```bash
-   sudo systemctl restart smbd
-   ```
-4. Add a Samba user:
-   ```bash
-   sudo smbpasswd -a your_username
-   ```
-
----
 
 ## 4. Create User-Specific Shares
 
@@ -99,7 +80,7 @@ sudo apt install samba -y
 1. Add users:
    ```bash
    sudo useradd -m mom
-   sudo passwd mom
+   sudo passwd <password> mom
    ```
    Repeat for others (`dad`, `sister`, etc.).
 
