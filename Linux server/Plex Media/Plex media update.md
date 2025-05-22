@@ -1,6 +1,6 @@
 #### Plex media update ####
 
-wget https://downloads.plex.tv/plex-media-server-new/1.41.6.9685-XXXXXX/debian/plexmediaserver_latest.deb  
+wget https://downloads.plex.tv/plex-media-server-new/1.41.7.XXXX/debian/plexmediaserver_1.41.7.XXXX_amd64.deb  
 
 // instead of XXXXX add version from https://www.plex.tv/media-server-downloads/?cat=computer&plat=linux#plex-media-server
 
