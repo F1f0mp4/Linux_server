@@ -1,8 +1,8 @@
 !/bin/bash
 
 # === CONFIGURATION ===
-SERVER_DIR="/mnt/minecraft/Middle-Earth_1.21"
-BACKUP_DIR="/mnt/nextcloud/smbshare/shifty/minecraft_backup"
+SERVER_DIR="/mnt/minecraft"
+BACKUP_DIR="/mnt/.../minecraft_backup"
 MAX_BACKUPS=7
 SCREEN_NAME="minecraft"
 
